@@ -48,3 +48,12 @@ set splitright
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" Copy yanked text to system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+
+" tab stop
+set ts=4 sw=4
+
+" C
+nnoremap <leader>gc :w<CR>:!gcc % -o %:r && ./%:r<CR>
