@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Files and directories to sync
-files_to_sync=(".xinitrc" ".vimrc" ".dwm")
+files_to_sync=(".xinitrc" ".vimrc" ".dwm", "bin")
 
 # Current directory
 target_dir=$(pwd)
