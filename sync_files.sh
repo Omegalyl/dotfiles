@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Files and directories to sync
-files_to_sync=(".xinitrc" ".vimrc" ".dwm", "bin")
+files_to_sync=(".xinitrc" ".vimrc" "dwm" "bin")
 
 # Current directory
 target_dir=$(pwd)
@@ -20,9 +20,20 @@ sync_file() {
   fi
 }
 
+rm_git() {
+  local file=$1
+
+  if [ -d "$file" ]; then
+	echo "Removing .git from $file"
+	find "$file" -type d -name ".git" -exec rm -rf {} +
+  fi
+
+}
+
 for file in "${files_to_sync[@]}"; do
   echo "Syncing $HOME/$file to $target_dir..."
   sync_file "$file" "$target_dir"
+  rm_git "$target_dir/$file"
 done
 
 echo "Syncing completed!"
